@@ -1,10 +1,23 @@
 from fastapi import FastAPI, Request
+from starlette.middleware.cors import CORSMiddleware
 
 from sql.Payment.router import payment_router
 from sql.database import db_instance
 
 app = FastAPI()
 
+origins = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():

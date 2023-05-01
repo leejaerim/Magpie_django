@@ -13,3 +13,20 @@
 ### Packages
 
 - `poetry add SQLAlchemy mysqlclient PyMySQL 'databases[mysql]'`
+
+### CORS
+
+```
+origins = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
