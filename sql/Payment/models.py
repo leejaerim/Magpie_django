@@ -6,8 +6,8 @@ payment = Table(
     "payment",
     db_metadata,
     Column("payment_id", Integer, primary_key=True, autoincrement=True),
-    Column("value", Integer),
-    Column("reg_date", DateTime(timezone=True), nullable=False, default=datetime.now)
+    Column("reg_date", DateTime(timezone=True), nullable=False, default=datetime.now),
+    Column("value", Integer)
 )
 
 payment.metadata.create_all(db_engine)
