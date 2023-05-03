@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Request
+import shutil
+from fastapi import FastAPI, Request, UploadFile, File
 from starlette.middleware.cors import CORSMiddleware
 
 from sql.Payment.router import payment_router
@@ -28,6 +29,12 @@ async def root():
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
+@app.post("/fileupload/")
+async def create_upload_file(file: UploadFile = File(...)):
+    file_location = f"uploads/{file.filename}"
+    with open(file_location, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    return {"filename": file.filename}
 
 # 서버 시작시 db connect
 @app.on_event("startup")

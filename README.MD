@@ -13,7 +13,8 @@
 ### Packages
 
 - `poetry add SQLAlchemy mysqlclient PyMySQL 'databases[mysql]'`
-
+- `poetry add python-multipart`
+  - for form data upload 
 ### CORS
 
 ```
